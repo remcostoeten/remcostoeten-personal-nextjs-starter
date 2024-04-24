@@ -1,26 +1,35 @@
 {
-  "name": "nextjs",
+  "name": "remcostoeten-nextjs-starter",
+  "description": "The marekt is absolutely NOT flooded with Next.js starter templates, so here's another one. This one is mine. Who knows someone likes it, I do. Love starts with self-love, right?",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
+    "dev0": "next dev --turbo --port 0000",
     "build": "next build",
+    "buildfull": "prettier --write \"**/*.{*tail*.js*,ts,tsx,mdx,css}\" --cache && eslint --fix . && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint:fix": "eslint --fix . --config ./.eslintrc.json",
+    "eslintfix": "eslint --fix . --config ./.eslintrc.json",
+    "eslint:check": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx,css}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
+    "next": "14.2.3",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.3"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.3"
+    "typescript": "^5"
   }
 }

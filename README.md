@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Work in Progress: A Personal Starter Kit
 
-## Getting Started
+This is a personal starter kit with packages I frequently use and configuration settings I prefer not to recreate every time.
 
-First, run the development server:
+### Will Consist Of
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Proper folder structure. I prefer `core/` instead of `lib` and floating that. Thus it will be:
+
+├── core
+│   ├── config          # config files with data such as menu items to map over, or other configuration files. See how site.ts is used in layout.tsx in the root(!)
+│   │   ├── menu.ts
+│   │   └── site.ts
+│   ├── database
+│   │   ├── firebase
+│   │   │   ├── auth.tsx
+│   │   │   └── firebase.ts
+│   │   └── graphql
+│   │       ├── apollo-client.ts
+│   │       └── apollo-wrapper.tsx
+│   ├── hooks
+│   │   └── use-click-outside.ts
+│   ├── lib            # utility functions. ShadN standard is @/lib/utils so if you partly migrate over to this structure be sure to find and replace `@/lib/utils` with `@/core/lib/utils` and change the path in `components.json`
+│   │   ├── animations
+│   │   │   ├── nav-animations.ts
+│   │   │   └── bezier-curves.ts
+│   │   ├── clsx.ts
+│   │   └── utils.ts
+│   ├── node-module-patches # When you need to make patches to the core I prefer uppercase
+│   │   └── next-link.ts   # underscore to indicate it's a patch
+│   ├── actions    # fetch logic goes here. Inline in components is fine for small projects but will get messy fast
+│   │   ├── queries    # fetch logic goes here. Inline in components is fine for small projects but will get messy fast
+│   │   │   └── fetch-anything.ts
+│   │   ├── mutations
+│   │   │   └── mutate-deez-nuts.ts
+│   └── types
+│       ├── types.ts
+│       └── ...extend
+
+## components
+
+├── auth
+│   ├── layout.tsx
+│   ├── sign-in
+│   │   └── sign-in.tsx
+│   └── sign-up
+│       └── sign-up.tsx
+├── dashboard
+│   ├── kanban
+│   │   ├── components  # specific component folder inside feature if unique to feature only
+│   │   │   └── kanban-specific-component.tsx
+│   │   └── page.tsx
+│   ├── layout.tsx
+│   └── page.tsx
+├── user-profile
+│   └── components  # specific component folder inside feature if unique to feature only
+│       └── add-user.tsx
+├── layout.tsx
+├── marketing  # pages should go here that provide information about the product/service. Landing page, contact, about etc
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── about
+│   │   └── page.tsx
+│   └── contact
+│       └── page.tsx
+└── page.tsx
+
+## Included Packages
+
+The following packages are included in this project. Packages marked with an asterisk (*) are considered essential.
+- Styling
+    <small>Remember, Tailwind is a utils framework so there's no shame in combining plain css/sass/less (well less you should be ashamed) for more complex pseudo and animation work</small>
+  - Tailwind CSS* for most boilerplate styling.
+  - SCSS for more complex styling.
+- Next-themes: Used for implementing dark/light mode.
+
+## Theme
+  - Radix UI*: This serves as the base for Shadcn-ui components.
+  - Next-themes: Used for implementing dark/light mode.
+    ```tsx
+    allows to use <div className='bg-back dark:bg-white'>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Random libs
+- [React Hook Form](https://react-hook-form.com/)*: Used for form handling.
+- [Framer Motion](https://www.framer.com/motion/): Used for animations. SCSS works fine, but anim in JS can get a bit more advanced. Worth the learning curve.
+- [Million.js -🔥🔥🔥Blazingly fast javascript🔥🔥🔥🔥🔥🔥Blazingly fast javascript🔥🔥🔥 ](https://million.dev/):
+New kid on the block. It says it compiles my stuff about treefiddy times faster so I believe it. Refer to next-config.-
+- [NextTopLoader](https://www.npmjs.com/package/nextjs-toploader): Adds a fancy loading bar at the top of the page with a lot of customization options. Default is off but can be turned on in layout.tsx with a **TODO DON'T FORGET!!!@remcostoeten**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Misc libs
+- [clsx](https://www.npmjs.com/package/clsx): Used for conditional classnames.
+- [react-icons](https://react-icons.github.io/react-icons/): Used for icons.
+- [Tailwind merge](https://www.npmjs.com/package/tailwindcss-merge): Used for merging Tailwind classes.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## data(base)
+    <small>Firebase rocks for quick prototyping and hobby projects. Got almost everything you need. No ORM or other stupid configs</small>
+- Firebase: Used for authentication and Firestore database. Setup [here](https://console.firebase.google.com/) and fill the `.env.local` <Small>(And let's be honest, Clerk auth is not the most visually appealing)<small>
+- [Firebase - react hookforms](https://github.com/CSFrequency/react-firebase-hooks/tree/09bf06b28c82b4c3c1beabb1b32a8007232ed045): Used for form handling.
+    <small>For separate back-ends I Setup an optional Apollo GraphQL </small>
 
-To learn more about Next.js, take a look at the following resources:
+- [Apollo Client](https://www.apollographql.com/docs/react/): Used for handling GraphQL.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<small>Another BaaS but with a more traditional squeal/postgres feel</small>
+- Convex: A more robust database solution.
+- Clerk: An alternative for those who prefer not to use Firebase for authentication.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Additional Packages
+- class-variance-authority: Additional package for class variance authority.
+- @vercel/speed-insights: Vercel package for speed insights. <small>Obviously only works when deployed to vercel. Remove from Providers.tsx if not needed</small>
+- @vercel/analytics: Vercel package for analytics. <small>Obviously only works when deployed to vercel. Remove from Providers.tsx if not needed</small>
+- builder.io/react-hydration-overlay: Builder.io is based. It makes you want to jump a little less often from a bridge when having hydration errors. <small>Remove from Providers.tsx if not needed</small>
+- Sharp. Idk vercel keeps telling me to use it. It should optimize images, or is a Bitcoin miner, who knows.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## DX
+- [Prettier](https://prettier.io/): Used for code formatting.
+   See `prettier.config.js` for configuration. Don't feel free to change it. It's perfect.
+- [ESLint](https://eslint.org/): Used for linting.
+    See `.eslintrc.js` for configuration. Don't feel free to change it. It's perfect.
