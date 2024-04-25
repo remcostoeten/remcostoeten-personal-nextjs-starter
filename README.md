@@ -1,86 +1,34 @@
-## Work in Progress: A Personal Starter Kit
+## Work in Progress: A NextJS (14) Starter Kit
 
 This is a personal starter kit with packages I frequently use and configuration settings I prefer not to recreate every time.
 
-### Will Consist Of
-
-- Proper folder structure. I prefer `core/` instead of `lib` and floating that. Thus it will be:
-
-├── core
-│   ├── config          # config files with data such as menu items to map over, or other configuration files. See how site.ts is used in layout.tsx in the root(!)
-│   │   ├── menu.ts
-│   │   └── site.ts
-│   ├── database
-│   │   ├── firebase
-│   │   │   ├── auth.tsx
-│   │   │   └── firebase.ts
-│   │   └── graphql
-│   │       ├── apollo-client.ts
-│   │       └── apollo-wrapper.tsx
-│   ├── hooks
-│   │   └── use-click-outside.ts
-│   ├── lib            # utility functions. ShadN standard is @/lib/utils so if you partly migrate over to this structure be sure to find and replace `@/lib/utils` with `@/core/lib/utils` and change the path in `components.json`
-│   │   ├── animations
-│   │   │   ├── nav-animations.ts
-│   │   │   └── bezier-curves.ts
-│   │   ├── clsx.ts
-│   │   └── utils.ts
-│   ├── node-module-patches # When you need to make patches to the core I prefer uppercase
-│   │   └── next-link.ts   # underscore to indicate it's a patch
-│   ├── actions    # fetch logic goes here. Inline in components is fine for small projects but will get messy fast
-│   │   ├── queries    # fetch logic goes here. Inline in components is fine for small projects but will get messy fast
-│   │   │   └── fetch-anything.ts
-│   │   ├── mutations
-│   │   │   └── mutate-deez-nuts.ts
-│   └── types
-│       ├── types.ts
-│       └── ...extend
-
-## components
-
-├── auth
-│   ├── layout.tsx
-│   ├── sign-in
-│   │   └── sign-in.tsx
-│   └── sign-up
-│       └── sign-up.tsx
-├── dashboard
-│   ├── kanban
-│   │   ├── components  # specific component folder inside feature if unique to feature only
-│   │   │   └── kanban-specific-component.tsx
-│   │   └── page.tsx
-│   ├── layout.tsx
-│   └── page.tsx
-├── user-profile
-│   └── components  # specific component folder inside feature if unique to feature only
-│       └── add-user.tsx
-├── layout.tsx
-├── marketing  # pages should go here that provide information about the product/service. Landing page, contact, about etc
-│   ├── layout.tsx
-│   ├── page.tsx
-│   ├── about
-│   │   └── page.tsx
-│   └── contact
-│       └── page.tsx
-└── page.tsx
+### Will consist of
+...
 
 ## Included Packages
 
 The following packages are included in this project. Packages marked with an asterisk (*) are considered essential.
+
 - Styling
-    <small>Remember, Tailwind is a utils framework so there's no shame in combining plain css/sass/less (well less you should be ashamed) for more complex pseudo and animation work</small>
   - Tailwind CSS* for most boilerplate styling.
   - SCSS for more complex styling.
+
+> [!NOTE]
+> Remember, Tailwind is a utility framework so there's no shame in combining plain CSS/SASS/LESS (well, you should be ashamed of LESS) for more complex pseudo and animation work.
+
 - Next-themes: Used for implementing dark/light mode.
 
 ## Theme
-  - Radix UI*: This serves as the base for Shadcn-ui components.
-  - Next-themes: Used for implementing dark/light mode.
-    ```tsx
-    allows to use <div className='bg-back dark:bg-white'>
-```
 
+- Radix UI*: This serves as the base for Shadcn-ui components.
+- Next-themes: Used for implementing dark/light mode.
+
+```tsx
+// allows to use
+<div className='bg-back dark:bg-white'>
+```
 ## Random libs
+
 - [React Hook Form](https://react-hook-form.com/)*: Used for form handling.
 - [Framer Motion](https://www.framer.com/motion/): Used for animations. SCSS works fine, but anim in JS can get a bit more advanced. Worth the learning curve.
 - [Million.js -🔥🔥🔥Blazingly fast javascript🔥🔥🔥🔥🔥🔥Blazingly fast javascript🔥🔥🔥 ](https://million.dev/):
@@ -117,3 +65,68 @@ New kid on the block. It says it compiles my stuff about treefiddy times faster 
    See `prettier.config.js` for configuration. Don't feel free to change it. It's perfect.
 - [ESLint](https://eslint.org/): Used for linting.
     See `.eslintrc.js` for configuration. Don't feel free to change it. It's perfect.
+
+    ## File structure
+
+- Proper folder structure. I prefer `core/` instead of `lib` and floating that. Thus it will be:
+
+```bash
+├── core
+│   ├── config          # config files with data such as menu items to map over, or other configuration files. See how site.ts is used in layout.tsx in the root(!)
+│   │   ├── menu.ts
+│   │   └── site.ts
+│   ├── database
+│   │   ├── firebase
+│   │   │   ├── auth.tsx
+│   │   │   └── firebase.ts
+│   │   └── graphql
+│   │       ├── apollo-client.ts
+│   │       └── apollo-wrapper.tsx
+│   ├── hooks
+│   │   └── use-click-outside.ts
+│   ├── lib                                 # utility functions. ShadN standard is @/lib/utils so if you partly migrate over to this structure be sure to find and replace `@/lib/utils` with `@/core/lib/utils` and change the path in `components.json`
+│   │   ├── animations
+│   │   │   ├── nav-animations.ts
+│   │   │   └── bezier-curves.ts
+│   │   ├── clsx.ts
+│   │   └── utils.ts
+│   ├── NODE_MODULE_PATcHES                 # When you need to make patches to the core I prefer uppercase
+│   │   └── next-link.ts                    # underscore to indicate it's a patch
+│   ├── actions                             # Mutations and queries
+│   │   ├── queries   fast
+│   │   │   └── fetch-anything.ts
+│   │   ├── mutations
+│   │   │   └── mutate-deez-nuts.ts
+│   └── types
+│       ├── types.ts
+│       └── ...extend
+```
+
+## components
+```bash
+├── (auth)
+│   ├── layout.tsx
+│   ├── sign-in
+│   │   └── sign-in.tsx
+│   └── sign-up
+│       └── sign-up.tsx
+├── (dashboard)
+│   ├── kanban
+│   │   ├── components  # specific component folder inside feature if unique to feature only
+│   │   │   └── kanban-specific-component.tsx
+│   │   └── page.tsx
+│   ├── layout.tsx
+│   └── page.tsx
+├── user-profile
+│   └── components  # specific component folder inside feature if unique to feature only
+│       └── add-user.tsx
+├── layout.tsx
+├── (marketing)  # pages should go here that provide information about the product/service. Landing page, contact, about etc
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── about
+│   │   └── page.tsx
+│   └── contact
+│       └── page.tsx
+└── page.tsx
+```

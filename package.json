@@ -1,6 +1,6 @@
 {
   "name": "remcostoeten-nextjs-starter",
-  "description": "The marekt is absolutely NOT flooded with Next.js starter templates, so here's another one. This one is mine. Who knows someone likes it, I do. Love starts with self-love, right?",
+  "description": "The market is absolutely NOT flooded with Next.js starter templates, so here's another one. This one is mine. Who knows someone likes it, I do. Love starts with self-love, right?",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,21 +17,24 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
-    "@types/sqlite3": "^3.1.11",
-    "better-sqlite3": "^9.5.0",
+    "better-sqlite3": "^8.4.0",
+    "drizzle-orm": "^0.26.3",
     "firebase": "^10.11.0",
     "framer-motion": "^11.1.7",
     "install": "^0.13.0",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "sqlite3": "^5.1.7"
+    "sass": "^1.75.0",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
+    "@types/better-sqlite3": "^7.6.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "drizzle-kit": "^0.18.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",
