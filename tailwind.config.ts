@@ -1,6 +1,9 @@
-import type { Config } from "tailwindcss";
+/** @type {import('tailwindcss').Config} */
 
-const config: Config = {
+const defaultTheme = require('tailwindcss/defaultTheme')
+
+module.exports = {
+  darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,13 +11,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        'sans': ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
+        'heading': ['var(--font-lexend)', ...defaultTheme.fontFamily.sans],
       },
     },
+    container: {
+      center: true,
+      padding: '2rem'
+    }
   },
   plugins: [],
 };
-export default config;
