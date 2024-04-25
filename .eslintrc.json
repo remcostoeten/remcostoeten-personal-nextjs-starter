@@ -1,3 +1,24 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "plugins": ["react-hooks"],
+  "rules": {
+    "indent": ["error", 4],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": [
+      "warn",
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "react/no-unescaped-entities": "off",
+    "no-console": "warn",
+    "no-debugger": "warn",
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "function", "next": "function" }
+    ],
+    "eol-last": ["error", "always"]
+  }
 }
