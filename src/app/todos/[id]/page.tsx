@@ -1,23 +1,23 @@
-import { db } from "@/core/(database)/localdb";
-import { todos } from "@/core/(database)/localdb/schema";
-import { eq } from "drizzle-orm";
-import { notFound } from "next/navigation";
-import TodoItem from "../components/TodoItem";
-import { delay } from "@/core/lib/utils";
-import ToggleTodo from "../components/ToggleTodo";
-import DeleteTodo from "../components/DeleteTodo";
-export const revalidate = 0;
+import { db } from '@/core/(database)/localdb'
+import { todos } from '@/core/(database)/localdb/schema'
+import { eq } from 'drizzle-orm'
+import { notFound } from 'next/navigation'
+import TodoItem from '../components/TodoItem'
+import { delay } from '@/core/lib/utils'
+import ToggleTodo from '../components/ToggleTodo'
+import DeleteTodo from '../components/DeleteTodo'
+export const revalidate = 0
 
 async function fetchTodo(id: string) {
-  const res = db.select().from(todos).where(eq(todos.id, parseInt(id))).get();
+    const res = db.select().from(todos).where(eq(todos.id, parseInt(id))).get()
 
-  if (!res) {
-    notFound();
-  }
+    if (!res) {
+        notFound()
+    }
 
-  await delay();
+    await delay()
 
-  return res;
+    return res
 }
 
 interface Props {
@@ -27,18 +27,18 @@ interface Props {
 }
 
 export default async function TodoPage({ params }: Props) {
-  const todo = await fetchTodo(params.id);
+    const todo = await fetchTodo(params.id)
 
-  return (
-    <>
-      <div className="flex flex-col gap-2">
-        <TodoItem {...todo} />
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full">
-          <ToggleTodo {...todo} />
+    return (
+        <>
+            <div className="flex flex-col gap-2">
+                <TodoItem {...todo} />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full">
+                    <ToggleTodo {...todo} />
 
-          <DeleteTodo id={todo.id} />
-        </div>
-      </div>
-    </>
-  );
+                    <DeleteTodo id={todo.id} />
+                </div>
+            </div>
+        </>
+    )
 }
