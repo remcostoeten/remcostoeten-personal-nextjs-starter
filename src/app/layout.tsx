@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '../styles/app.scss'
+import ProviderWrapper from '@/core/providers/providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -10,12 +11,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
     children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  }: Readonly<{
+    children: React.ReactNode;
+  }>) {
     return (
-        <html lang="en">
-            <body className={`${inter.className} bg-zinc-900 text-white`}><div className="container mt-8">{children}</div></body>
-        </html>
-    )
-}
+      <html lang="en">
+        <ProviderWrapper>
+          <body className={`${inter.className} bg-zinc-900 text-white`}>
+            <div className="container mt-8">
+              {children}
+            </div>
+          </body>
+        </ProviderWrapper>
+      </html>
+    );
+  }

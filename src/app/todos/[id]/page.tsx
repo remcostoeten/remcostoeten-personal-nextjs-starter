@@ -3,7 +3,7 @@ import { todos } from '@/core/(database)/localdb/schema'
 import { eq } from 'drizzle-orm'
 import { notFound } from 'next/navigation'
 import TodoItem from '../components/TodoItem'
-import { delay } from '@/core/lib/utils'
+import {delay} from '@/core/lib/utils'
 import ToggleTodo from '../components/ToggleTodo'
 import DeleteTodo from '../components/DeleteTodo'
 export const revalidate = 0
