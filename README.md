@@ -1,3 +1,6 @@
+> [!WARNING]
+> Todo app is for dev only, excuse me if i forgot to delete. If u want to use it yourself setup and skweeeeeeligt (sqlite) database and check commit `14274817d37720a98ba2776b149643c9db7a5216`
+
 ## Work in Progress: A NextJS (14) Starter Kit
 
 This is a personal starter kit with packages I frequently use and configuration settings I prefer not to recreate every time.
