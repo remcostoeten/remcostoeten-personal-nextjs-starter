@@ -1,3 +1,18 @@
+#
+# Authentication
+NEXTAUTH_URL='http://localhost:3000'
+NEXTAUTH_SECRET=
+
+#
+# Admin credentials - Hardcoded user w/o database
+ADMIN_EMAIL=''
+ADMIN_PASSWORD='!'
+ADMIN_NAME=''
+ADMIN_USERNAME=''
+
+
+
+
 ## Firebase credentials. Retrieve at https://console.firebase.google.com/
 
 NEXT_PUBLIC_FIREBASE_API_KEY="your-firebase-api-key"

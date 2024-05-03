@@ -8,6 +8,14 @@ This is a personal starter kit with packages I frequently use and configuration 
 ### Will consist of
 ...
 
+### Authentication
+- NextAuth with credentials
+`/api/auth/login`
+`/api/auth/logout`
+
+Hardcoded users in `src/auth/auth-options.ts` with admin in `.env` file.
+
+
 ## Included Packages
 
 The following packages are included in this project. Packages marked with an asterisk (*) are considered essential.
